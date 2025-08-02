@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const path = require("path");
 const cors = require("cors");
-//const corsOptions = require("./config/corsOptions");
+const corsOptions = require("./config/corsOptions");
 const { logger } = require("./Middleware/logs");
 const errorHandler = require("./Middleware/errorHandler");
 const verifyJWT = require("./Middleware/verifyJWT");
@@ -15,8 +15,8 @@ const PORT = process.env.PORT || 3500;
 connectDB();
 app.use(logger);
 
-//app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+//app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 
