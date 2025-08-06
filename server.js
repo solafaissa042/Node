@@ -15,20 +15,20 @@ const PORT = process.env.PORT || 3500;
 connectDB();
 app.use(logger);
 
-/* app.use((req, res, next) => {
+app.use(cors(corsOptions));
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://frontsection.netlify.app");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,OPTIONS,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
   next();
-}); */
-/* app.options("*", (req, res) => {
+});
+app.options("*", (req, res) => {
   res.sendStatus(204);
-}); */
+});
 //"http://localhost:3000"
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+//app.options("*", cors(corsOptions));
 //app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
