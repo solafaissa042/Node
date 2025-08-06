@@ -16,9 +16,14 @@ connectDB();
 app.use(logger);
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://frontsection.netlify.app"),
-    res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Origin", "https://frontsection.netlify.app");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,OPTIONS,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
   next();
+});
+app.options("*", (req, res) => {
+  res.sendStatus(204);
 });
 //"http://localhost:3000"
 
