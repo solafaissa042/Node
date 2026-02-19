@@ -13,13 +13,18 @@ const handleLogout = async (req, res) => {
     return res.sendStatus(204);
   }
 
-  foundUser.refreshToken = "";
+  foundUser.refreshToken = foundUser.refreshToken.filter(
+    (rt) => rt !== refreshToken
+  );
   const result = await foundUser.save();
   console.log(result);
 
   res.clearCookie("jwt", {
     httpOnly: true,
+    sameSite: "None",
+    secure: true,
   });
+
   return res.sendStatus(204);
 };
 
