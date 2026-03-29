@@ -9,7 +9,7 @@ const userSchema = new schema({
   roles: {
     User: {
       type: Number,
-      default: 2000,
+      default: 5150,
     },
     Editor: Number,
     Admin: Number,
